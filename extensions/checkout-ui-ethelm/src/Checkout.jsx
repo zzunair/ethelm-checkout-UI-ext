@@ -39,7 +39,7 @@ import {
   Banner,
   reactExtension,
   useTranslate,
-  useExtensionApi,
+  useApi,
   useStorage,
   useDeliveryGroups
 } from '@shopify/ui-extensions-react/checkout';
@@ -51,12 +51,10 @@ export default reactExtension(
 
 function Extension() {
   const translate = useTranslate();
-  const { extension } = useExtensionApi();
+  const { extension } = useApi();
   const { write, read } = useStorage();
 
   let shipping = useDeliveryGroups();
-
-//here you got all the information about shipping in shipping variable 
   console.log("shopiifng", shipping);
 
   useEffect(() => {
@@ -70,7 +68,6 @@ function Extension() {
 
         if (localValue) {
           console.log('Zunair is working on the extension');
-          setShowRushShipping(false);
         }
       } catch (error) {
         console.error('Error managing storage:', error);
